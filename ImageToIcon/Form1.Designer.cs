@@ -180,6 +180,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(627, 311);
             this.panel5.TabIndex = 6;
+            this.panel5.Click += new System.EventHandler(this.panel5_Click);
             this.panel5.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel5_DragDrop);
             this.panel5.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel5_DragEnter);
             // 

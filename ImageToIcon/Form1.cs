@@ -25,24 +25,30 @@ namespace wmgCMS
 
         public void convert()
         {
-            Bitmap thumb = (Bitmap) Image.FromFile(imageToConvertPath[0]);
-            thumb.MakeTransparent();
-            if (tbHeight.Text != "" && tbWidth.Text != "")
-            {
-                int w = Int32.Parse(tbWidth.Text);
-                int h = Int32.Parse(tbHeight.Text);
-                thumb = ResizeImage(thumb, w, h );
-            }
-            //Icon ico = Icon.FromHandle(thumb.GetHicon());
+            if (imageToConvertPath != null) {
+                Bitmap thumb = (Bitmap)Image.FromFile(imageToConvertPath[0]);
+                thumb.MakeTransparent();
+                if (tbHeight.Text != "" && tbWidth.Text != "")
+                {
+                    int w = Int32.Parse(tbWidth.Text);
+                    int h = Int32.Parse(tbHeight.Text);
+                    thumb = ResizeImage(thumb, w, h);
+                }
+                //Icon ico = Icon.FromHandle(thumb.GetHicon());
 
-            //Generate save file dialog
-            SaveFileDialog sfd = new SaveFileDialog();
-            //Set dialog filter
-            sfd.Filter = "Icon (*.ico)|*.ico|All files (*.*)|*.*";
-            if (sfd.ShowDialog() == DialogResult.OK )
+                //Generate save file dialog
+                SaveFileDialog sfd = new SaveFileDialog();
+                //Set dialog filter
+                sfd.Filter = "Icon (*.ico)|*.ico|All files (*.*)|*.*";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    byte[] byteArr = imagetoByteArray(thumb);
+                    File.WriteAllBytes(sfd.FileName, byteArr);
+                }
+            }
+            else
             {
-                byte[] byteArr = imagetoByteArray(thumb);
-                File.WriteAllBytes(sfd.FileName, byteArr);
+                MessageBox.Show("Please select an image by dragging it into the window or by clicking 'Browse...'");
             }
         }
 
@@ -128,10 +134,23 @@ namespace wmgCMS
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                pictureBox1.BackgroundImage = Image.FromFile(ofd.FileName);
+                try
+                {
+                    pictureBox1.BackgroundImage = Image.FromFile(ofd.FileName);
+                } catch(Exception i)  {
+                    MessageBox.Show("Invalid image file. Please select a valid file.");
+                }
+
+            
                 imageToConvertPath = new String[1]; //Must instantiate array to prevent null reference exception
                 imageToConvertPath[0] = ofd.FileName;
             }
+        }
+
+        private void panel5_Click(object sender, EventArgs e)
+        {
+            //Allow user to click on upload area to select file
+            button1_Click(this, new EventArgs());
         }
     }
 }
