@@ -54,8 +54,14 @@ namespace wmgCMS
                 {
                     Stream IconStream = System.IO.File.Create(sfd.FileName);
 
-                    Icon icon = Icon.FromHandle(thumb.GetHicon());
+                    //DEPRECATED DUE TO LOW QUALITY ICON
+                    /*Icon icon = Icon.FromHandle(thumb.GetHicon());
                     icon.Save(IconStream);
+                    IconStream.Close();*/
+
+                    Icon icon = ImageHelper.Convert(thumb, new Size(w, h));
+                    this.Icon = icon;
+                    this.Icon.Save(IconStream);
                     IconStream.Close();
                 }
             }

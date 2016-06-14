@@ -15,7 +15,7 @@ namespace wmgCMS
     {
         private static byte[] pngiconheader =
                         new byte[] { 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        public static Icon PngIconFromImage(Image img, Size s)
+        public static Icon Convert(Image img, Size s)
         {
             using (Bitmap bmp = new Bitmap(img, s))
             {
@@ -29,9 +29,9 @@ namespace wmgCMS
 
                 using (System.IO.MemoryStream fs = new System.IO.MemoryStream())
                 {
-                    if (s.Width >= 256 || s.Height >= 256) { s.Width = 256; s.Height = 256; }
+                    //if (s.Width >= 256 || s.Height >= 256) { s.Width = 256; s.Height = 256; }
                     pngiconheader[6] = (byte)s.Width;
-                    pngiconheader[7] = (byte)s.Width;
+                    pngiconheader[7] = (byte)s.Height;
                     pngiconheader[14] = (byte)(png.Length & 255);
                     pngiconheader[15] = (byte)(png.Length / 256);
                     pngiconheader[18] = (byte)(pngiconheader.Length);
