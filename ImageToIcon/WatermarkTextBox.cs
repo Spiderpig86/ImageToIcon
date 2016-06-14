@@ -23,7 +23,6 @@ namespace wmgCMS
             set
             {
                 _waterMarkColor = value;
-                //thanks to Bernhard Elbl for Invalidate()
                 Invalidate();
             }
         }

@@ -27,13 +27,19 @@ namespace wmgCMS
         {
             if (imageToConvertPath != null) {
                 Bitmap thumb = (Bitmap)Image.FromFile(imageToConvertPath[0]);
-                thumb.MakeTransparent();
+                int w;
+                int h;
                 if (tbHeight.Text != "" && tbWidth.Text != "")
                 {
-                    int w = Int32.Parse(tbWidth.Text);
-                    int h = Int32.Parse(tbHeight.Text);
+                    w = Int32.Parse(tbWidth.Text);
+                    h = Int32.Parse(tbHeight.Text);
                     thumb = ResizeImage(thumb, w, h);
+                    
+                } else {
+                    w = thumb.Width;
+                    h = thumb.Height;
                 }
+                thumb.MakeTransparent();
                 //Icon ico = Icon.FromHandle(thumb.GetHicon());
 
                 //Generate save file dialog
@@ -42,11 +48,9 @@ namespace wmgCMS
                 sfd.Filter = "Icon (*.ico)|*.ico|All files (*.*)|*.*";
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    Stream IconStream = System.IO.File.OpenWrite(sfd.FileName); 
+                    Stream IconStream = System.IO.File.Create(sfd.FileName);
 
-                    Icon icon = System.Drawing.Icon.FromHandle(thumb.GetHicon());
-                    this.Icon = icon;
-                    icon.Save(IconStream); 
+                   ImageHelper.convert(imageToConvertPath[0], sfd.FileName, new Size(w, h));
                 }
             }
             else
