@@ -54,11 +54,11 @@ namespace wmgCMS
             Control.CheckForIllegalCrossThreadCalls = false;
         }
 
-        //Override OnCreateControl ... thanks to  "lpgray .. codeproject guy"
+        //Override OnCreateControl ... 
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-            WaterMark_Toggel(null, null);
+            WaterMark_Toggle(null, null);
         }
 
         //Override OnPaint
@@ -78,12 +78,12 @@ namespace wmgCMS
         {
             if (@join)
             {
-                this.TextChanged += this.WaterMark_Toggel;
-                this.LostFocus += this.WaterMark_Toggel;
+                this.TextChanged += this.WaterMark_Toggle;
+                this.LostFocus += this.WaterMark_Toggle;
                 //No one of the above events will start immeddiatlly 
                 //TextBox control still in constructing, so,
                 //Font object (for example) couldn't be catched from within WaterMark_Toggle
-                //So, call WaterMark_Toggel through OnCreateControl after TextBox is totally created
+                //So, call WaterMark_Toggle through OnCreateControl after TextBox is totally created
                 //No doupt, it will be only one time call
 
                 //Old solution uses Timer.Tick event to check Create property
@@ -91,7 +91,7 @@ namespace wmgCMS
             }
         }
 
-        public void WaterMark_Toggel(object sender, EventArgs args)
+        public void WaterMark_Toggle(object sender, EventArgs args)
         {
             if (this.Text.Length <= 0)
             {

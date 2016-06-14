@@ -42,25 +42,17 @@ namespace wmgCMS
                 sfd.Filter = "Icon (*.ico)|*.ico|All files (*.*)|*.*";
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    byte[] byteArr = imagetoByteArray(thumb);
-                    File.WriteAllBytes(sfd.FileName, byteArr);
+                    Stream IconStream = System.IO.File.OpenWrite(sfd.FileName); 
+
+                    Icon icon = System.Drawing.Icon.FromHandle(thumb.GetHicon());
+                    this.Icon = icon;
+                    icon.Save(IconStream); 
                 }
             }
             else
             {
                 MessageBox.Show("Please select an image by dragging it into the window or by clicking 'Browse...'");
             }
-        }
-
-        public byte[] imagetoByteArray(Image img)
-        {
-
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-            byte[] i = ms.ToArray();
-            ms.Close();
-            ms.Dispose();
-            return i;
         }
 
         //Handles cursor effects when dragging over data
@@ -138,7 +130,7 @@ namespace wmgCMS
                 {
                     pictureBox1.BackgroundImage = Image.FromFile(ofd.FileName);
                 } catch(Exception i)  {
-                    MessageBox.Show("Invalid image file. Please select a valid file.");
+                    MessageBox.Show("Invalid image file. Please select a valid file. Exception: " + i.Message);
                 }
 
             

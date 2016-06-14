@@ -199,7 +199,7 @@
             this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(643, 506);
             this.Name = "Form1";
-            this.Text = "Image To Icon Converter";
+            this.Text = "Iconify";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
