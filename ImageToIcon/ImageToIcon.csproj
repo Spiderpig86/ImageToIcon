@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>wmgCMS</RootNamespace>
-    <AssemblyName>ImageToIcon</AssemblyName>
+    <AssemblyName>Iconify</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -98,13 +98,13 @@
     <None Include="Resources\onenote.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\iconify.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Iconify2.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logoshadow.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconify.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -40,7 +40,11 @@ namespace wmgCMS
                     h = thumb.Height;
                 }
                 thumb.MakeTransparent();
-                //Icon ico = Icon.FromHandle(thumb.GetHicon());
+
+                Graphics g = Graphics.FromImage(thumb); // allow drawing to it
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic; // make the image shrink nicely by using HighQualityBicubic mode
+                g.DrawImage(thumb, 0, 0, w, h);
+                g.Flush();
 
                 //Generate save file dialog
                 SaveFileDialog sfd = new SaveFileDialog();
@@ -50,7 +54,9 @@ namespace wmgCMS
                 {
                     Stream IconStream = System.IO.File.Create(sfd.FileName);
 
-                   ImageHelper.convert(imageToConvertPath[0], sfd.FileName, new Size(w, h));
+                    Icon icon = Icon.FromHandle(thumb.GetHicon());
+                    icon.Save(IconStream);
+                    IconStream.Close();
                 }
             }
             else
