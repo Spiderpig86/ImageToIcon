@@ -35,10 +35,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.tbHeight = new wmgCMS.WaterMarkTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.tbWidth = new wmgCMS.WaterMarkTextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.tbHeight = new wmgCMS.WaterMarkTextBox();
+            this.tbWidth = new wmgCMS.WaterMarkTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -65,7 +65,7 @@
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(538, 1);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 35);
+            this.button2.Size = new System.Drawing.Size(90, 36);
             this.button2.TabIndex = 1;
             this.button2.Text = "Convert";
             this.button2.UseVisualStyleBackColor = true;
@@ -80,7 +80,7 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(448, 1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 35);
+            this.button1.Size = new System.Drawing.Size(90, 36);
             this.button1.TabIndex = 0;
             this.button1.Text = "Browse...";
             this.button1.UseVisualStyleBackColor = true;
@@ -121,6 +121,31 @@
             this.panel4.Size = new System.Drawing.Size(486, 1);
             this.panel4.TabIndex = 9;
             // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.DarkGray;
+            this.panel3.Location = new System.Drawing.Point(12, 51);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(486, 1);
+            this.panel3.TabIndex = 7;
+            // 
+            // panel5
+            // 
+            this.panel5.AllowDrop = true;
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.BackgroundImage = global::wmgCMS.Properties.Resources.drag;
+            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 119);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(627, 311);
+            this.panel5.TabIndex = 6;
+            this.panel5.Click += new System.EventHandler(this.panel5_Click);
+            this.panel5.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel5_DragDrop);
+            this.panel5.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel5_DragEnter);
+            // 
             // tbHeight
             // 
             this.tbHeight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -140,16 +165,6 @@
             this.tbHeight.WaterMarkText = "Height (px)";
             this.tbHeight.Enter += new System.EventHandler(this.tbHeight_Enter);
             // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.DarkGray;
-            this.panel3.Location = new System.Drawing.Point(12, 51);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(486, 1);
-            this.panel3.TabIndex = 7;
-            // 
             // tbWidth
             // 
             this.tbWidth.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -168,21 +183,6 @@
             this.tbWidth.WaterMarkLocked = false;
             this.tbWidth.WaterMarkText = "Width (px)";
             this.tbWidth.Enter += new System.EventHandler(this.tbWidth_Enter);
-            // 
-            // panel5
-            // 
-            this.panel5.AllowDrop = true;
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.BackgroundImage = global::wmgCMS.Properties.Resources.drag;
-            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 119);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(627, 311);
-            this.panel5.TabIndex = 6;
-            this.panel5.Click += new System.EventHandler(this.panel5_Click);
-            this.panel5.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel5_DragDrop);
-            this.panel5.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel5_DragEnter);
             // 
             // Form1
             // 
